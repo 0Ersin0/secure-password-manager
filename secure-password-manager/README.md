@@ -1,38 +1,42 @@
-# 🛡️ EO Digital Vault | Professional Password Manager
+# 🛡️ EO Digital Vault v2.0 | Enterprise Password Manager
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Python](https://img.shields.io/badge/python-3.10%2B-blue) ![Security](https://img.shields.io/badge/security-AES%20128-green) ![Status](https://img.shields.io/badge/status-Stable-success)
+> **"Güvenlik bir ürün değil, bir süreçtir."**
 
-**EO Digital Vault**, verilerinizi 3. parti bulut sunucularında değil, kendi bilgisayarınızda askeri standartlarda şifreleyerek saklayan, yerel (offline) ve modern bir parola yönetim aracıdır.
+**EO Digital Vault**, verilerinizi 3. parti bulut sunucularında değil, kendi bilgisayarınızda en üst düzey güvenlik standartlarıyla şifreleyerek saklayan, yerel (offline) ve kurumsal seviyede bir parola yönetim aracıdır.
 
-Bu proje **EO Digital Lab** siber güvenlik çalışmaları kapsamında geliştirilmiştir.
+Bu proje **EO Digital Lab** siber güvenlik çalışmaları kapsamında, **Blue Team (Savunma)** prensiplerine göre geliştirilmiştir.
 
-![Project Screenshot](screenshot.png)
+## 🚀 v2.0 Sürüm Notları (Major Update)
+Bu sürümle birlikte uygulama, basit bir şifre saklayıcıdan **Kurumsal Güvenlik Mimarisine** geçiş yapmıştır.
 
-## 🚀 Proje Hakkında
-
-Günümüzde veri güvenliği en kritik konudur. EO Digital Vault, şifrelerinizi bir metin dosyasında saklamak yerine, **kriptografik** yöntemlerle korunan güvenli bir veritabanında (Vault) saklar.
-
-Uygulama **"Zero-Knowledge" (Sıfır Bilgi)** prensibiyle çalışır. Yani Ana Şifrenizi (Master Password) sizden başka kimse (geliştirici dahil) bilemez ve verilerinize erişemez.
+| Özellik | Açıklama |
+| :--- | :--- |
+| 🛡️ **Gelişmiş Güvenlik** | Timing Attack koruması ve OWASP standartlarında 600.000 iterasyon. |
+| 🧹 **Bellek Hijyeni** | Hassas veriler (RAM) bellekten ve panodan (30 sn) otomatik temizlenir. |
+| 📝 **Audit Logging** | Tüm güvenlik olayları ve hatalar `password_manager.log` dosyasına kaydedilir. |
+| ⏱️ **Otomatik Kilit** | 5 dakika hareketsizlik algılandığında oturum kilitlenir. |
+| 🔍 **Akıllı Arama** | Binlerce kayıt arasında anlık filtreleme ve arama yapabilir. |
+| 📦 **Yedekleme** | Verilerinizi şifreli veya düz metin olarak CSV/JSON formatında dışa aktarın. |
 
 ## 🔐 Güvenlik Mimarisi (Technical Specs)
 
-Bu proje basit bir arayüz çalışması değildir. Arka planda endüstri standardı güvenlik algoritmaları çalışır:
+EO Digital Vault, **"Zero-Knowledge"** (Sıfır Bilgi) prensibiyle çalışır. Arka planda çalışan güvenlik mekanizmaları şunlardır:
 
-* **AES-128 (Fernet) Şifreleme:** Her bir parola veritabanına kaydedilmeden önce şifrelenir. Veritabanı dosyası çalınsa bile, Master Password olmadan veriler anlamsızdır.
-* **PBKDF2-HMAC-SHA256:** Master Password'ünüz asla veritabanında saklanmaz. Bunun yerine, rastgele üretilen bir **Salt (Tuz)** değeri ile hashlenerek saklanır.
-* **Secure Random Generation:** Şifre oluşturucu modülü, Python'un standart `random` kütüphanesini değil, kriptografik olarak güvenli `secrets` modülünü kullanır.
+* **AES Şifreleme (Fernet):** Her bir parola veritabanına kaydedilmeden önce şifrelenir. Veritabanı dosyası çalınsa bile, Master Password olmadan veriler matematiksel olarak çözülemez.
+* **Anti-Timing Attack:** Şifre doğrulamalarında `hmac.compare_digest` kullanılarak, saldırganların işlem süresinden şifreyi tahmin etmesi (Side-Channel Attack) engellenmiştir.
+* **PBKDF2-HMAC-SHA256:** Master Password, **600.000 iterasyon** (döngü) ile hashlenir. Bu, modern GPU'larla yapılan Brute-Force saldırılarına karşı direnç sağlar.
+* **Secure Random:** Şifre üretiminde Python'un standart `random` kütüphanesi yerine, kriptografik olarak güvenli `secrets` modülü kullanılır.
 
-## ✨ Özellikler
+## ✨ Temel Özellikler
 
-* 🎨 **Modern Arayüz:** `CustomTkinter` ile geliştirilmiş şık Dark Mode tasarımı.
-* 🎲 **Güçlü Şifre Üretici:** Tek tıkla kırılması zor şifreler oluşturun.
-* 📋 **Akıllı Kopyalama:** Şifreleri görüntülemeden panoya kopyalama imkanı.
-* 💾 **Yerel Veritabanı:** İnternet gerektirmez, verileriniz bilgisayarınızda kalır (`SQLite`).
-* 🆔 **Marka Kimliği:** EO Digital Lab kurumsal güvenlik standartlarına uygun geliştirme.
+* 🎨 **Modern UI:** CustomTkinter ile geliştirilmiş, göz yormayan Dark/Light mod destekli arayüz.
+* 🎲 **Şifre Üretici:** Tek tıkla kırılması zor, karmaşık şifreler oluşturun.
+* 💾 **Yerel Veritabanı:** İnternet gerektirmez, verileriniz bilgisayarınızda `SQLite` veritabanında kalır.
+* 🆔 **Marka Kimliği:** EO Digital Lab güvenlik standartlarına uygun geliştirme.
 
 ## 🛠️ Kurulum (Installation)
 
-Projeyi kendi bilgisayarınızda çalıştırmak için adımları izleyin:
+Projeyi kendi bilgisayarınızda çalıştırmak için:
 
 1.  **Repoyu Klonlayın:**
     ```bash
@@ -50,27 +54,14 @@ Projeyi kendi bilgisayarınızda çalıştırmak için adımları izleyin:
     python main.py
     ```
 
-## 📦 Gereksinimler
-
-* Python 3.x
-* customtkinter
-* cryptography
-* pyperclip
-
 ## ⚠️ Yasal Sorumluluk Reddi (Disclaimer)
 
-Bu yazılım (**EO Digital Vault**), eğitim ve portföy geliştirme amaçlı hazırlanmış açık kaynaklı bir projedir.
-
-1.  **Garanti Yoktur:** Yazılım "OLDUĞU GİBİ" (AS IS) sunulmaktadır. Herhangi bir garanti verilmemektedir.
-2.  **Veri Kaybı:** Master Password'ün unutulması durumunda verilerin kurtarılması **imkansızdır**. Bu bir hata değil, güvenlik özelliğidir.
-3.  **Kullanıcı Sorumluluğu:** Yazılımın kullanımı sonucu oluşabilecek veri kayıplarından veya güvenlik ihlallerinden geliştirici sorumlu tutulamaz. Kritik şifrelerinizin tek yedeği olarak kullanmanız önerilmez.
+Bu yazılım (EO Digital Vault), eğitim ve portföy geliştirme amaçlı hazırlanmış açık kaynaklı bir projedir.
+* **Garanti Yoktur:** Yazılım "OLDUĞU GİBİ" (AS IS) sunulmaktadır.
+* **Veri Kaybı:** Master Password'ün unutulması durumunda verilerin kurtarılması **imkansızdır**. Bu bir hata değil, güvenlik özelliğidir.
+* **Sorumluluk:** Kullanım sonucu oluşabilecek veri kayıplarından geliştirici sorumlu tutulamaz.
 
 ---
 
-### 👨‍💻 Geliştirici
-
-**Geliştirici:** [0Ersin0](https://github.com/0Ersin0)
-**Marka:** EO Digital Lab Security Systems
-
-Copyright © 2025 EO Digital Lab.
-Distributed under the MIT License.
+**Geliştirici:** Ersin Ö. | **Marka:** EO Digital Lab Security Systems  
+*Copyright © 2026 EO Digital Lab. Distributed under the MIT License.*
