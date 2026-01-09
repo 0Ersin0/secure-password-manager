@@ -272,7 +272,7 @@ class DatabaseManager:
     - Şifre CRUD işlemleri (Create, Read, Update, Delete)
     """
     
-    def __init__(self, db_name: str = "password_vault.db"):
+    def __init__(self, db_name: str = "password_vault_v2.db"):
         """
         Args:
             db_name: Veritabanı dosyasının adı

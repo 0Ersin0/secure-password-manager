@@ -4,6 +4,8 @@
 
 **EO Digital Vault**, verilerinizi 3. parti bulut sunucularında değil, kendi bilgisayarınızda en üst düzey güvenlik standartlarıyla şifreleyerek saklayan, yerel (offline) ve kurumsal seviyede bir parola yönetim aracıdır.
 
+![Main Vault](Screenshot_PassM-2.png)
+
 Bu proje **EO Digital Lab** siber güvenlik çalışmaları kapsamında, **Blue Team (Savunma)** prensiplerine göre geliştirilmiştir.
 
 ## 🚀 v2.0 Sürüm Notları (Major Update)
@@ -27,12 +29,16 @@ EO Digital Vault, **"Zero-Knowledge"** (Sıfır Bilgi) prensibiyle çalışır. 
 * **PBKDF2-HMAC-SHA256:** Master Password, **600.000 iterasyon** (döngü) ile hashlenir. Bu, modern GPU'larla yapılan Brute-Force saldırılarına karşı direnç sağlar.
 * **Secure Random:** Şifre üretiminde Python'un standart `random` kütüphanesi yerine, kriptografik olarak güvenli `secrets` modülü kullanılır.
 
-## ✨ Temel Özellikler
+## 📸 Ekran Görüntüleri Galerisi
 
-* 🎨 **Modern UI:** CustomTkinter ile geliştirilmiş, göz yormayan Dark/Light mod destekli arayüz.
-* 🎲 **Şifre Üretici:** Tek tıkla kırılması zor, karmaşık şifreler oluşturun.
-* 💾 **Yerel Veritabanı:** İnternet gerektirmez, verileriniz bilgisayarınızda `SQLite` veritabanında kalır.
-* 🆔 **Marka Kimliği:** EO Digital Lab güvenlik standartlarına uygun geliştirme.
+### Güvenli Giriş Ekranı (Dark Mode)
+![Login Screen](Screenshot_PassM-4.png)
+
+### Ayarlar ve Veri Yedekleme
+![Settings](Screenshot_PassM-3.png)
+
+### Açık Tema Desteği (Light Mode)
+![Light Mode](Screenshot_PassM-1.png)
 
 ## 🛠️ Kurulum (Installation)
 
@@ -40,8 +46,8 @@ Projeyi kendi bilgisayarınızda çalıştırmak için:
 
 1.  **Repoyu Klonlayın:**
     ```bash
-    git clone [https://github.com/0Ersin0/secure-password-manager.git](https://github.com/0Ersin0/secure-password-manager.git)
-    cd secure-password-manager
+    git clone [https://github.com/KULLANICIADIN/REPOADIN.git](https://github.com/KULLANICIADIN/REPOADIN.git)
+    cd REPOADIN
     ```
 
 2.  **Gerekli Kütüphaneleri Yükleyin:**
